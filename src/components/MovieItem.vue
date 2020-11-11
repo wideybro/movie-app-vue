@@ -8,10 +8,16 @@
       </div>
       <div class="movie-item-controls row no-gutters">
         <div class="col pr-2">
-          <BButton size="mb" block variant="outline-light">Edite</BButton>
+          <BButton size="md" block variant="outline-light">Edit</BButton>
         </div>
         <div class="col pl-2">
-          <BButton size="mb" block variant="outline-light">Remove</BButton>
+          <BButton
+            size="md"
+            block
+            variant="outline-light"
+            @click="emitRemoveEvent"
+            >Remove</BButton
+          >
         </div>
       </div>
     </div>
@@ -34,6 +40,14 @@ export default {
       };
     },
   },
+  methods: {
+    emitRemoveEvent() {
+      this.$emit("removeItem", {
+        id: this.movie.imdbID,
+        title: this.movie.Title,
+      });
+    },
+  },
 };
 </script>
 
@@ -46,35 +60,41 @@ export default {
   transition: all 0.2s ease;
   height: 400px;
 }
+
 .movie-item:hover {
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.7);
   transform: scale(1.02);
 }
+
 .movie-item-poster {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
   bottom: 0;
+  right: 0;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   z-index: -1;
 }
+
 .movie-info-wrap {
   padding: 20px 10px;
   height: 100%;
   opacity: 0;
   transition: all 0.2s ease;
 }
+
 .movie-title {
   font-size: 20px;
   color: #fff;
 }
+
 .movie-year {
   font-size: 14px;
   color: #fff;
 }
+
 .movie-item:hover .movie-info-wrap {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.7);
