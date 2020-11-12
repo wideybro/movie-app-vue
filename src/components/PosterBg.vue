@@ -12,7 +12,8 @@ export default {
     },
   },
   data: () => ({
-    defaultPosterBg: "linear-gradient(45deg,rgb(0,3,38)0%,rgb(82,15,117)100%)",
+    defaultPosterBg:
+      "linear-gradient(45deg,rgb(0, 3, 38) 0%,rgb(82, 15, 117) 100%)",
   }),
   computed: {
     posterStyle() {
@@ -39,6 +40,7 @@ export default {
   background-position: center;
   transition: all 0.2s ease;
 }
+
 .poster-page-bg::before {
   content: "";
   position: absolute;
